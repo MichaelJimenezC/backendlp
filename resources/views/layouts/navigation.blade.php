@@ -16,6 +16,22 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <x-nav-link :href="route('create-category')" :active="request()->routeIs('create-category')">
+        {{ __('Create Category') }}
+    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('create-product')" :active="request()->routeIs('create-product')">
+                        {{ __('Subir Producto') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
+        {{ __('Ver productos') }}
+    </x-nav-link>
+</div>
+
             </div>
 
             <!-- Settings Dropdown -->
