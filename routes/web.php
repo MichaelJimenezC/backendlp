@@ -3,12 +3,16 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 
+=======
+use App\Http\Controllers\CartController;
+>>>>>>> Stashed changes
 =======
 use App\Http\Controllers\CartController;
 >>>>>>> Stashed changes
