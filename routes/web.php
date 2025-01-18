@@ -2,24 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 
-=======
 use App\Http\Controllers\CartController;
->>>>>>> Stashed changes
-=======
-use App\Http\Controllers\CartController;
->>>>>>> Stashed changes
-=======
-use App\Http\Controllers\CartController;
->>>>>>> Stashed changes
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -47,6 +38,7 @@ Route::get('/create-product', [ProductController::class, 'create'])->name('creat
 Route::get('/cart', [CartItemController::class, 'index']);
 Route::post('/cart', [CartItemController::class, 'store']);
 Route::delete('/cart/{id}', [CartItemController::class, 'destroy']);
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
 Route::post('/orders', [OrderController::class, 'store']);
 Route::get('/orders', [OrderController::class, 'index']);

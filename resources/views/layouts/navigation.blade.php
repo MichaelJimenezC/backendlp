@@ -31,6 +31,14 @@
         {{ __('Ver productos') }}
     </x-nav-link>
 </div>
+<div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+<x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
+        Carrito
+        <span class="ml-2 bg-blue-500 text-white text-xs rounded-full px-2 py-1">
+            {{ session()->has('cart') ? count(session('cart')) : 0 }}
+        </span>
+    </x-nav-link>
+</div>
 
             </div>
 

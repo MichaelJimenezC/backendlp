@@ -31,6 +31,14 @@
                                    class="block mt-4 text-center bg-blue-500 text-black hover:bg-blue-600 py-2 rounded-md">
                                     Ver más
                                 </a>
+                                <form action="{{ route('cart.add') }}" method="POST" class="mt-4">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="number" name="quantity" value="1" min="1" class="w-16 border rounded-md p-2" required>
+                                    <button type="submit" class="block mt-4 text-center bg-blue-500 text-black hover:bg-blue-600 py-2 rounded-md">
+                                        Agregar al carrito
+                                    </button>
+                                </form>
                             </div>
                             <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
                                 Nuevo
