@@ -34,6 +34,10 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::middleware('auth')->post('/products', [ProductController::class, 'store']);
 Route::get('/create-product', [ProductController::class, 'create'])->name('create-product')->middleware('auth');
+// routes/web.php
+
+Route::get('/products/{productId}/reviews', [ReviewController::class, 'show']); // Ver reseñas
+Route::post('/products/{productId}/reviews', [ReviewController::class, 'store'])->middleware('auth'); // Enviar reseña
 
 Route::get('/cart', [CartItemController::class, 'index']);
 Route::post('/cart', [CartItemController::class, 'store']);

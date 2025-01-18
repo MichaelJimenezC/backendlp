@@ -31,6 +31,33 @@
                                    class="block mt-4 text-center bg-blue-500 text-black hover:bg-blue-600 py-2 rounded-md">
                                     Ver más
                                 </a>
+                                  <!-- Botones de Ver Reseñas y Escribir Reseña -->
+                                  <div class="mt-4">
+                                    <a href="{{ url('/products/' . $product->id . '/reviews') }}" 
+                                       class="block mt-4 text-center bg-green-500 text-black hover:bg-green-600 py-2 rounded-md">
+                                        Ver Reseñas
+                                    </a>
+                                    @auth
+                                        <form action="{{ url('/products/' . $product->id . '/reviews') }}" method="POST" class="mt-4">
+                                            @csrf
+                                            <label for="rating" class="block text-gray-700">Calificación:</label>
+                                            <select name="rating" id="rating" required class="block w-full mt-2 mb-4 rounded-md border-gray-300">
+                                                <option value="1">1 Estrella</option>
+                                                <option value="2">2 Estrellas</option>
+                                                <option value="3">3 Estrellas</option>
+                                                <option value="4">4 Estrellas</option>
+                                                <option value="5">5 Estrellas</option>
+                                            </select>
+
+                                            <label for="comment" class="block text-gray-700">Comentario:</label>
+                                            <textarea name="comment" id="comment" rows="3" class="block w-full mt-2 mb-4 rounded-md border-gray-300" placeholder="Deja tu comentario"></textarea>
+
+                                            <button type="submit" class="block mt-4 text-center bg-yellow-500 text-black hover:bg-yellow-600 py-2 rounded-md">
+                                                Enviar Reseña
+                                            </button>
+                                        </form>
+                                    @endauth
+                                </div>
                                 <form action="{{ route('cart.add') }}" method="POST" class="mt-4">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
