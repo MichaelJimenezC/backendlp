@@ -2,12 +2,16 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+<<<<<<< Updated upstream
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReviewController;
 
+=======
+use App\Http\Controllers\CartController;
+>>>>>>> Stashed changes
 Route::get('/', function () {
     return view('welcome');
 });
@@ -49,3 +53,4 @@ Route::get('/create-category', function () {
 // Ruta para el formulario de subir producto
 
 require __DIR__.'/auth.php';
+require __DIR__.'/cart.php';
