@@ -11,34 +11,37 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     // Mostrar todos los productos con su categoría asociada
-    public function index()
+    // app/Http/Controllers/ProductController.php
+
+public function index()
 {
     $products = Product::with('category')->get(); // Obtener todos los productos con sus categorías
-    return view('products', compact('products')); // Pasar datos a la vista
+    return response()->json($products);  // Enviar los productos en formato JSON
 }
+
 
 
     // Crear un nuevo producto
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
-            'category_id' => 'required|exists:categories,id', // Validar que la categoría exista
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+    ]);
 
-        // Crear producto asociado al usuario autenticado
-        $product = Product::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'category_id' => $request->category_id,
-            'user_id' => auth()->user()->id, // Asignar el usuario autenticado
-        ]);
+    // Crear producto
+    $product = Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'category_id' => $request->category_id,
+        'user_id' => auth()->user()->id,
+    ]);
 
-        return response()->json($product, 201); // Retornar el producto creado con el código de estado 201
-    }
+    return response()->json($product, 201); // Retornar el producto creado
+}
 
     // Mostrar un solo producto con su categoría y reseñas asociadas
     public function show($id)
