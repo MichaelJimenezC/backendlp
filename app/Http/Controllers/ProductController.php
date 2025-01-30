@@ -13,11 +13,15 @@ class ProductController extends Controller
     // Mostrar todos los productos con su categoría asociada
     // app/Http/Controllers/ProductController.php
 
-public function index()
-{
-    $products = Product::with('category')->get(); // Obtener todos los productos con sus categorías
-    return response()->json($products);  // Enviar los productos en formato JSON
-}
+    public function index()
+    {
+        // Obtener todos los productos con sus categorías y el usuario asociado
+        $products = Product::with(['category', 'user'])->get();
+        
+        // Devolver la respuesta con los productos, categorías y usuarios
+        return response()->json($products);
+    }
+    
 
 
 

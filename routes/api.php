@@ -1,7 +1,11 @@
 <?php
 // routes/api.php
 use App\Http\Controllers\ProductController;
+use App\Http\Middleware\CorsMiddleware;
 
-Route::get('/products', [ProductController::class, 'index']);   // Obtener todos los productos
-Route::get('/products/{id}', [ProductController::class, 'show']); // Obtener un solo producto
-Route::post('/products', [ProductController::class, 'store']);   // Crear un producto
+// Aplicar CORS middleware a todas las rutas del grupo
+Route::middleware([CorsMiddleware::class])->group(function () {
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/products/{id}', [ProductController::class, 'show']);
+    Route::post('/products', [ProductController::class, 'store']);
+});
